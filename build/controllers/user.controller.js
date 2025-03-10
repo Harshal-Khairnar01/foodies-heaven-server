@@ -34,10 +34,6 @@ exports.register = (0, catchAsyncError_1.CatchAsyncError)(async (req, res, next)
         const activationToken = (0, exports.createActivationToken)(user);
         const activationCode = activationToken.activationCode;
         const data = { user: { name: user.username }, activationCode };
-        // const html = await ejs.renderFile(
-        //   path.join(__dirname, "../mails/activation-mail.ejs"),
-        //   data
-        // );
         try {
             await (0, sendMail_1.default)({
                 email: user.email,

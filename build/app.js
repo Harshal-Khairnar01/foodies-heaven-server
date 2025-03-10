@@ -15,19 +15,22 @@ const express_rate_limit_1 = require("express-rate-limit");
 exports.app.use(express_1.default.json({ limit: "50mb" }));
 // cookie parser
 exports.app.use((0, cookie_parser_1.default)());
+const allowedOrigins = process.env.ORIGIN
+    ? JSON.parse(process.env.ORIGIN)
+    : ["http://localhost:3000"];
 // cors=> cross origin resource sharing
 exports.app.use((0, cors_1.default)({
     // origin: process.env.ORIGIN,
-    origin: ["http://localhost:3000"],
+    origin: allowedOrigins,
     credentials: true,
     // methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allow required methods
     // allowedHeaders: ["Content-Type", "Authorization"], // ✅ Allow required headers
 }));
-// api request limit 
+// api request limit
 const limiter = (0, express_rate_limit_1.rateLimit)({
     windowMs: 15 * 60 * 1000, // 15 minutes
     limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
-    standardHeaders: 'draft-8', // draft-6: `RateLimit-*` headers; draft-7 & draft-8: combined `RateLimit` header
+    standardHeaders: "draft-8", // draft-6: `RateLimit-*` headers; draft-7 & draft-8: combined `RateLimit` header
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
     // store: ... , // Redis, Memcached, etc. See below.
 });
