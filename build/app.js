@@ -23,8 +23,8 @@ exports.app.use((0, cors_1.default)({
     // origin: process.env.ORIGIN,
     origin: allowedOrigins,
     credentials: true,
-    // methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allow required methods
-    // allowedHeaders: ["Content-Type", "Authorization"], // ✅ Allow required headers
+    methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allow required methods
+    allowedHeaders: ["Content-Type", "Authorization"], // ✅ Allow required headers
 }));
 // api request limit
 const limiter = (0, express_rate_limit_1.rateLimit)({
