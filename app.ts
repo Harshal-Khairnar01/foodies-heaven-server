@@ -26,9 +26,8 @@ app.use(
     // origin: process.env.ORIGIN,
     origin: allowedOrigins,
     credentials: true,
-
-    // methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allow required methods
-    // allowedHeaders: ["Content-Type", "Authorization"], // ✅ Allow required headers
+    methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allow required methods
+    allowedHeaders: ["Content-Type", "Authorization"], // ✅ Allow required headers
   })
 );
 
@@ -50,8 +49,6 @@ import contactRouter from "./routes/contact.route";
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/", recipeRouter);
 app.use("/api/v1/", contactRouter);
-
-
 
 // middleware calls
 app.use(limiter);
