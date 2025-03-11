@@ -42,12 +42,6 @@ const contact_route_1 = __importDefault(require("./routes/contact.route"));
 exports.app.use("/api/v1/users", user_route_1.default);
 exports.app.use("/api/v1/", recipe_route_1.default);
 exports.app.use("/api/v1/", contact_route_1.default);
-//unknown route
-// app.all("*", (req: Request, res: Response, next: NextFunction) => {
-//   const err = new Error(`Can't find ${req.originalUrl} on this server`) as any;
-//   err.statusCode = 404;
-//   next(err);
-// });
 // middleware calls
 exports.app.use(limiter);
 exports.app.use(error_1.ErrorMiddleware);

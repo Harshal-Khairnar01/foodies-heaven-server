@@ -11,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --transpile-only server.ts",
     "start": "node build/server.js",
-    "build": "tsc"
+    "build": "tsc && node copyTemplates.js"
   },
   "author": "Harshal Khairnar",
   "license": "ISC",
@@ -39,6 +39,8 @@
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",
-    "@types/nodemailer": "^6.4.17"
+    "@types/nodemailer": "^6.4.17",
+    "copyfiles": "^2.4.1",
+    "fs-extra": "^11.3.0"
   }
 }
